@@ -13,7 +13,6 @@ export class AiChatController {
     res.setHeader("Cache-Control", "no-cache");
     const {message} = payload;
     await this.aiChatService.getAiChatStream(message,(chunk)=>{
-      console.log("Res-", chunk)
       res.write(`data: ${chunk}\n\n`);
     }, id);
     res.end();
