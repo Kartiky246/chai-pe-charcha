@@ -7,14 +7,26 @@ import { AiChatService } from './ai-chat.service';
 export class AiChatController {
   constructor(private readonly aiChatService: AiChatService) {}
 
-  @Post()
-  async sendMessage(@Res() res: Response, @Body() payload: ChatMessageDto) {
+  @Post('/hitesh')
+  async sendMessageToHitesh(@Res() res: Response, @Body() payload: ChatMessageDto) {
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache");
     const {message} = payload;
     await this.aiChatService.getAiChatStream(message,(chunk)=>{
       res.write(`data: ${chunk}\n\n`);
-    });
+    }, 'hitesh');
+    res.end();
+  }
+
+  @Post('/piyush')
+  async sendMessageToPiyush(@Res() res: Response, @Body() payload: ChatMessageDto) {
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    const {message} = payload;
+    await this.aiChatService.getAiChatStream(message,(chunk)=>{
+      console.log("Res-", chunk)
+      res.write(`data: ${chunk}\n\n`);
+    }, 'piyush');
     res.end();
   }
 }
