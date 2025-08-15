@@ -1,6 +1,23 @@
-import { IsString } from 'class-validator';
+// chat.dto.ts
+import { IsArray, IsEnum, IsString, ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
 
-export class ChatMessageDto {
+export enum Role {
+  SYSTEM = 'system',
+  USER = 'user',
+}
+
+export class MessageDto {
+  @IsEnum(Role)
+  role: Role;
+
   @IsString()
-  message: string;
+  content: string;
+}
+
+export class ChatRequestDto {
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => MessageDto)
+  messages: MessageDto[];
 }

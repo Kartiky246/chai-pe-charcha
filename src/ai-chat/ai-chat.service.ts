@@ -15,8 +15,8 @@ enum AIModels{
 export class AiChatService {
     constructor(private readonly geminiService: GeminiService){}
 
-    getAiChatStream = async (message,  onChunk: (chunk: string) => void, perosnId: string) =>{
+    getAiChatStream = async (messages,  onChunk: (chunk: string) => void, perosnId: string) =>{
         const personaSystemPrompt = generateSystemPrompt(personas.find(v=>v.id === perosnId)!)
-        await streamAiResponse(message, this.geminiService.client, onChunk, AIModels.Gemini_Flash, personaSystemPrompt)
+        await streamAiResponse(messages, this.geminiService.client, onChunk, AIModels.Gemini_Flash, personaSystemPrompt)
     }
 }

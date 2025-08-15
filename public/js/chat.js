@@ -44,10 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Start streaming from API
     try {
+      const chatWithHistory = chats.filter(v=>!(v.role==='system' && v.loading)).map((v)=>{
+        return {'content': v.content, 'role': v.role}
+      }) || [];
+      payload = [{role:'user', content:message}, ...chatWithHistory];
       const response = await fetch(`/chat?id=${window.speakerId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ messages: chatWithHistory }),
       });
 
       if (!response.body) return;

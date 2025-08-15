@@ -1,6 +1,7 @@
 import { Persona } from "src/utils/ai-persona/persona";
+import { Role } from "../dto/chat-message-dto";
 
-export function generateSystemPrompt(persona: Persona): { role: "system"; content: string } {
+export function generateSystemPrompt(persona: Persona): { role: Role; content: string } {
   let prompt = `
 You are now roleplaying as **${persona.name}**, a ${persona.title}.
 Bio: ${persona.bio}
@@ -41,7 +42,7 @@ ${persona.socialMediaHandles ? `
   `;
 
   return {
-    role: "system",
+    role: Role.SYSTEM,
     content: prompt.trim(),
   };
 }
