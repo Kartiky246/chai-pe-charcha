@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <h1>☕ {{title}}</h1>
+  </header>
+
+  <main class="container">
+    {{#each speakers}}
+      <div class="card">
+        <div class="card-header">
+          <img src="{{this.avatar}}" alt="{{this.name}}" class="avatar">
+          <div>
+            <h2 class="name">{{this.name}}</h2>
+            <p class="role">{{this.title}}</p>
+          </div>
+        </div>
+        <p class="description">{{this.bio}}</p>
+        <div class="tags">
+          {{#each this.specialties}}
+            <span class="tag">{{this}}</span>
+          {{/each}}
+        </div>
+      </div>
+    {{/each}}
+  </main>
+  <div id="btn-container">
+    <button id="chat-btn"></button>
+  </div>
+</body>
+</html>
