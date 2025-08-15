@@ -3,16 +3,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnContainer = document.getElementById("btn-container");
   const chatBtn = document.getElementById("chat-btn");
 
+  let selectedSpeakerId = null;
+
   cards.forEach(card => {
     card.addEventListener("click", () => {
-        cards.forEach(c => c.classList.remove("card-selected"));
-        card.classList.add("card-selected");
-        btnContainer.classList.add("active-btn");
+      cards.forEach(c => c.classList.remove("card-selected"));
+      card.classList.add("card-selected");
 
-        const speakerName = card.querySelector(".name").textContent;
+      const speakerName = card.querySelector(".name").textContent;
+      selectedSpeakerId = card.id;
 
-        chatBtn.textContent = `Start Chat with ${speakerName}`;
+      chatBtn.textContent = `Start Chat with ${speakerName}`;
 
+      btnContainer.classList.add("active-btn");
     });
+  });
+
+  chatBtn.addEventListener("click", () => {
+    if (selectedSpeakerId) {
+      window.location.href = `/chat/${selectedSpeakerId}`;
+    }
   });
 });

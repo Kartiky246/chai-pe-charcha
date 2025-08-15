@@ -1,4 +1,4 @@
-import { Controller, Get, Res } from '@nestjs/common';
+import { Controller, Get, Param, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import type { Response } from 'express';
 import { personas } from './utils/ai-persona/persona';
@@ -21,9 +21,16 @@ export class AppController {
       avatar: v.avatar,
       specialties: v.specialties,
       bio: v.bio,
-      title: v.title
+      title: v.title,
+      id: v.id
     }))
   })
+  }
+
+  @Get("chat/:id")
+  renderChat(@Param("id") id: string, @Res() res: Response) {
+    const speaker = personas.find((v)=>v.id===id); 
+    res.render("chat", { speaker });
   }
   
 }
