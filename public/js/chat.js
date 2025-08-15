@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const msgDiv = document.createElement("div");
       msgDiv.classList.add("chat-message", chat.role);
 
-      if (chat.role === "system" && chat.loading) {
+      if (chat.role === "assistant" && chat.loading) {
         msgDiv.innerHTML = `<div class="typing-loader"><span></span><span></span><span></span></div>`;
       } else {
         msgDiv.textContent = chat.content;
@@ -35,16 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     chatInput.value = "";
 
-    // Add a placeholder system message with loader
-    const sysMsg = { role: "system", content: "", loading: true };
-    chats.push(sysMsg);
+    const mssg = { role: "assistant", content: "", loading: true };
+    chats.push(mssg);
     renderChats();
 
-    const sysIndex = chats.length - 1;
+    const idx = chats.length - 1;
 
     // Start streaming from API
     try {
-      const chatWithHistory = chats.filter(v=>!(v.role==='system' && v.loading)).map((v)=>{
+      const chatWithHistory = chats.filter(v=>!(v.role==='assistant' && v.loading)).map((v)=>{
         return {'content': v.content, 'role': v.role}
       }) || [];
       payload = [{role:'user', content:message}, ...chatWithHistory];
@@ -74,22 +73,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // On first chunk, remove loader
         if (firstChunk) {
-          chats[sysIndex].loading = false;
+          chats[idx].loading = false;
           firstChunk = false;
         }
 
-        chats[sysIndex].content = fullResponse;
+        chats[idx].content = fullResponse;
         renderChats();
       }
 
-      chats[sysIndex].loading = false;
-      chats[sysIndex].content = fullResponse;
+      chats[idx].loading = false;
+      chats[idx].content = fullResponse;
       renderChats();
 
     } catch (err) {
       console.error("Error in chat streaming:", err);
-      chats[sysIndex].loading = false;
-      chats[sysIndex].content = "[Error fetching response]";
+      chats[idx].loading = false;
+      chats[idx].content = "[Error fetching response]";
       renderChats();
     }
   });

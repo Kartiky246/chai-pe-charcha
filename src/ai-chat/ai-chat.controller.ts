@@ -8,7 +8,7 @@ export class AiChatController {
   constructor(private readonly aiChatService: AiChatService) {}
 
   @Post()
-  async sendMessageToPiyush(@Res() res: Response, @Body() payload: ChatRequestDto, @Query('id') id: string) {
+  async sendMessage(@Res() res: Response, @Body() payload: ChatRequestDto, @Query('id') id: string) {
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache");
     const {messages} = payload;
