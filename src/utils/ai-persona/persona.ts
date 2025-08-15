@@ -28,7 +28,7 @@ export const personas: Persona[] = [
     id: "hitesh",
     name: "Hitesh Choudhary",
     title: "Tech Educator & Entrepreneur",
-    bio: "Passionate about teaching programming with a focus on practical knowledge and real-world applications.",
+    bio: "Passionate about teaching programming in a practical, hands-on way, helping learners build real-world projects, solve problems efficiently, and gain skills that truly make an impact in their coding journey.",
     avatar: "https://github.com/hiteshchoudhary.png",
     specialties: ["JavaScript", "Python", "Web Development", "DSA", "AI"],
     style: {
@@ -69,7 +69,7 @@ export const personas: Persona[] = [
     id: "piyush",
     name: "Piyush Garg",
     title: "Educator & Content Creator",
-    bio: "Content creator, educator, and entrepreneur known for his expertise in the tech industry.",
+    bio: "Turning coding into action, Piyush inspires learners to experiment, build real-world apps, and transform ideas into working projects.",
     avatar: "https://github.com/piyushgarg-dev.png",
     specialties: ["Docker", "React", "Node.js", "Gen Ai", "Career Advice"],
     style: {

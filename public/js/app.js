@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const speakerName = card.querySelector(".name").textContent;
       selectedSpeakerId = card.id;
 
-      chatBtn.textContent = `Start Chat with ${speakerName}`;
+      chatBtn.textContent = `Start Charcha with ${speakerName}`;
 
       btnContainer.classList.add("active-btn");
     });
