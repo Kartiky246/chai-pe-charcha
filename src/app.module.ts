@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { AiChatModule } from './ai-chat/ai-chat.module';
 import { OpenAiModule } from './config/open-ai/open-ai.module';
-import { GeminiModule } from './config/gemini/gemini/gemini.module';
+import { GeminiModule } from './config/gemini/gemini.module';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), AiChatModule, OpenAiModule, GeminiModule],

@@ -1,4 +1,3 @@
-// chat.dto.ts
 import { IsArray, IsEnum, IsString, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 

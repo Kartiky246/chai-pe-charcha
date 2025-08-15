@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { streamAiResponse } from 'src/utils/ai-response-stream.util';
-import { GeminiService } from 'src/config/gemini/gemini/gemini.service';
+import { streamAiResponse } from 'src/utils/chat/ai-response-stream.util';
+import { GeminiService } from 'src/config/gemini/gemini.service';
 import { personas } from 'src/utils/ai-persona/persona';
-import { generateSystemPrompt } from './helpers/peronsaSystemPrompt.helper';
+import { generateSystemPrompt } from 'src/utils/ai-persona/persona-prompt-helper';
 // import { OpenAiService } from 'src/config/open-ai/open-ai.service';
 
 

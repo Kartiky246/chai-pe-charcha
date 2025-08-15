@@ -1,5 +1,5 @@
 import { Persona } from "src/utils/ai-persona/persona";
-import { Role } from "../dto/chat-message-dto";
+import { Role } from "src/ai-chat/dto/chat-message-dto";
 
 export function generateSystemPrompt(persona: Persona): { role: Role; content: string } {
   let prompt = `
