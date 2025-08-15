@@ -43,7 +43,7 @@
   font-size: 0.95rem;
   line-height: 1.4;
   white-space: pre-wrap;
-  width: 33%;
+  width: 25%;
 }
 
 .chat-message.user {
@@ -52,11 +52,11 @@
   margin-left: auto;
 }
 
-.chat-message.system {
+.chat-message.assistant {
   background: #f2f2f2;
   color: #333;
   margin-right: auto;
-  width: 33%;
+  width: 40%;
 }
 
 .chat-input-bar {
